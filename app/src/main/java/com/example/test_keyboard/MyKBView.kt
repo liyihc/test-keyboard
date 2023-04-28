@@ -11,6 +11,7 @@ import androidx.core.graphics.toColorInt
 import kotlin.math.max
 
 class MyKBView : View {
+    var DEBUG = true
     lateinit var buffer: Bitmap;
 
     constructor(ctx: Context) : super(ctx) {}
@@ -24,9 +25,13 @@ class MyKBView : View {
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        Log.i(context.getString(R.string.my_ime), "onMeasure: in width: $widthMeasureSpec, height: $heightMeasureSpec")
+        if (DEBUG) Log.i(
+            context.getString(R.string.my_ime),
+            "onMeasure: in width: $widthMeasureSpec, height: $heightMeasureSpec"
+        )
+//        这里传入的宽会很大，但不要怕，我们直接传一个最大的值回去，这样在实际onDraw的时候会帮我们获取需要的宽度的
         setMeasuredDimension(
-            200, 200
+            widthMeasureSpec, 200
         )
     }
 
@@ -35,12 +40,22 @@ class MyKBView : View {
         if (canvas == null) return;
         var canvasWidth = max(1, width);
         var canvasHeight = max(1, height);
-        Log.i(context.getString(R.string.my_ime), "onDraw: width $canvasWidth height $canvasHeight")
+        if (DEBUG) Log.i(context.getString(R.string.my_ime), "onDraw: width $canvasWidth height $canvasHeight")
         buffer = Bitmap.createBitmap(canvasWidth, canvasHeight, Bitmap.Config.ARGB_8888);
         var mcanvas = Canvas(buffer)
         var paint = Paint()
+        paint.color = 0xFF000000.toInt()
+        mcanvas.drawRect(0f, 0f, canvasWidth.toFloat(), canvasHeight.toFloat(), paint)
         paint.color = 0x77FFFFFF.toInt()
         mcanvas.drawCircle((canvasWidth / 2).toFloat(), (canvasHeight / 2).toFloat(), 50f, paint)
         canvas.drawBitmap(buffer, 0f, 0f, null)
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        if (DEBUG) Log.i(
+            context.getString(R.string.my_ime),
+            "onSizeChanged: new-size: w $w h $h old-size: w $w h $h"
+        )
+        super.onSizeChanged(w, h, oldw, oldh)
     }
 }
