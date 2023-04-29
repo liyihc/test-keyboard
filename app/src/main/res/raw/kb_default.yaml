@@ -1,0 +1,88 @@
+name: default layout
+rows:
+  - keys:
+      - type: key
+        value: q
+      - type: key
+        value: w
+      - type: key
+        value: e
+      - type: key
+        value: r
+      - type: key
+        value: t
+      - type: key
+        value: y
+      - type: key
+        value: u
+      - type: key
+        value: i
+      - type: key
+        value: o
+      - type: key
+        value: p
+  - keys:
+      - type: key
+        value: a
+      - type: key
+        value: s
+      - type: key
+        value: d
+      - type: key
+        value: f
+      - type: key
+        value: g
+      - type: key
+        value: h
+      - type: key
+        value: j
+      - type: key
+        value: k
+      - type: key
+        value: l
+  - keys:
+      - type: func
+        text: shift
+        value: shift
+      - type: key
+        value: z
+      - type: key
+        value: x
+      - type: key
+        value: c
+      - type: key
+        value: v
+      - type: key
+        value: b
+      - type: key
+        value: n
+      - type: key
+        value: m
+      - type: func
+        text: <-
+        value: backspace
+  - keys:
+      - type: func
+        text: 123
+        value: num
+      - type: key
+        value: ","
+      - type: spacer
+        text: ——
+        value: " "
+      - type: func
+        text: "."
+        value: semicolon
+      - type: func
+        text: Enter
+        value: enter
+  - keys:
+      - type: func
+        text: ...
+        value: switch-ime
+      - type: spacer
+      - type: func
+        text: _
+        value: hide
+
+
