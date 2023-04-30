@@ -14,9 +14,9 @@ public class MyIME : InputMethodService() {
         super.onInitializeInterface()
         keyboardLayout = Yaml.default.decodeFromStream(
             MyKBView.KeyboardLayout.serializer(),
-            resources.openRawResource(R.raw.kb_default))
-        if(DEBUG)
-        {
+            resources.openRawResource(R.raw.kb_default)
+        )
+        if (DEBUG) {
             Log.i(getString(R.string.my_ime), "onInitializeInterface: ${keyboardLayout.rows.size}")
             for (row in keyboardLayout.rows)
                 Log.i(getString(R.string.my_ime), "onInitializeInterface: ${row.toPrintString()}")
@@ -27,6 +27,7 @@ public class MyIME : InputMethodService() {
         Log.i("MyIME", "onCreateInputView: ")
         keyboardView = layoutInflater.inflate(R.layout.keyboard, null) as MyKBView;
         keyboardView.DEBUG = DEBUG
+        keyboardView.layout = keyboardLayout
         return keyboardView;
     }
 }

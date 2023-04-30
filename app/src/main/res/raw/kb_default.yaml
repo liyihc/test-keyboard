@@ -1,4 +1,15 @@
 name: default layout
+row_height: 130
+padding:
+  top: 30
+  left: 30
+  right: 30
+  bottom: 30
+key_padding:
+  top: 10
+  left: 10
+  right: 10
+  bottom: 10
 rows:
   - keys:
       - type: key
@@ -65,24 +76,30 @@ rows:
       - type: func
         text: 123
         value: num
+        key_width: 1.7
       - type: key
         value: ","
-      - type: spacer
+        key_width: 1.5
+      - type: func
         text: ——
         value: " "
       - type: func
         text: "."
         value: semicolon
+        key_width: 1.5
       - type: func
         text: Enter
         value: enter
+        key_width: 1.7
   - keys:
       - type: func
         text: ...
         value: switch-ime
-      - type: spacer
+        key_width: 1.5
+      - type: func
       - type: func
         text: _
         value: hide
+        key_width: 1.5
 
 
