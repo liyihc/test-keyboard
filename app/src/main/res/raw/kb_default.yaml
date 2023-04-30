@@ -4,11 +4,11 @@ padding:
   top: 30
   left: 30
   right: 30
-  bottom: 30
+  bottom: 0
 key_padding:
   top: 10
-  left: 10
-  right: 10
+  left: 8
+  right: 8
   bottom: 10
 rows:
   - keys:
@@ -72,7 +72,12 @@ rows:
       - type: func
         text: <-
         value: backspace
-  - keys:
+  - key_padding:
+      top: 8
+      left: 8
+      right: 8
+      bottom: 10
+    keys:
       - type: func
         text: 123
         value: num
