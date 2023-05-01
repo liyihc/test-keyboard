@@ -27,7 +27,7 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         keyboardLayout = Yaml.default.decodeFromStream(
@@ -41,7 +41,6 @@ class FirstFragment : Fragment() {
                 Log.i(getString(R.string.my_ime), "onInitializeInterface: ${row.toPrintString()}")
         }
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

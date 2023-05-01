@@ -22,6 +22,7 @@ class MyKBView : View {
     var DEBUG = true
     lateinit var buffer: Bitmap;
     lateinit var layout: KeyboardLayout;
+    var keyboardListener: OnKeyboardActionListener? = null;
     val pos: MutableList<Pair<Float, List<Pair<Float, Key>>>> = mutableListOf()
 
     constructor(ctx: Context) : super(ctx) {}
@@ -133,8 +134,8 @@ class MyKBView : View {
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         if (event == null) return super.onTouchEvent(event)
-        if (DEBUG)
-            Log.i(context.getString(R.string.my_ime), "onTouchEvent: ${event.x} ${event.y}")
+//        if (DEBUG)
+//            Log.i(context.getString(R.string.my_ime), "onTouchEvent: ${event.x} ${event.y}")
         var find: Key? = null
         for ((bottom, row) in pos) {
             if (bottom < event.y) continue
@@ -144,11 +145,12 @@ class MyKBView : View {
                 break
             }
             if (find == null) find = row.last().second
-            if (DEBUG)
-                Log.i(
-                    context.getString(R.string.my_ime),
-                    "onTouchEvent: Touch ${find.shownText}"
-                )
+            keyboardListener?.onTmp(find)
+//            if (DEBUG)
+//                Log.i(
+//                    context.getString(R.string.my_ime),
+//                    "onTouchEvent: Touch ${find.shownText}"
+//                )
 
             break
         }
@@ -252,6 +254,7 @@ class MyKBView : View {
     }
 
     interface OnKeyboardActionListener {
+        fun onTmp(key: Key);
         fun onPress();
         fun onRelease();
         fun swipeLeft();

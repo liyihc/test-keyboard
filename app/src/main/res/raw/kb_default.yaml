@@ -87,7 +87,7 @@ rows:
         key_width: 1.5
       - type: func
         text: ——
-        value: " "
+        value: "space"
       - type: func
         text: "."
         value: semicolon
